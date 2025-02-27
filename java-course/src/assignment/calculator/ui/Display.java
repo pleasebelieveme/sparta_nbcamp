@@ -13,7 +13,8 @@ public class Display {
 		System.out.println("+---------------------------+");
 	}
 	public void menu() {
-		System.out.println("1. 두개의 숫자 더하기");
+		System.out.println("메뉴를 입력하세요: ");
+		System.out.println("1. 두개의 숫자로 사칙연산하기");
 		System.out.println("0. 종료하기");
 	}
 }
