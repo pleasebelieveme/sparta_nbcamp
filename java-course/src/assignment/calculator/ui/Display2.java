@@ -31,6 +31,8 @@ public class Display2 {
 	public void menu() {
 		System.out.println("메뉴를 입력하세요: ");
 		System.out.println("1. 두개의 숫자로 사칙연산하기");
+		System.out.println("2. 계산값 조회하기");
+		System.out.println("3. 계산값 삭제하기");
 		System.out.println("0. 종료하기");
 	}
 	public void askFirstNum() {
@@ -41,5 +43,18 @@ public class Display2 {
 	}
 	public void askOperator() {
 		System.out.print("사칙연산 기호를 입력하세요(+, -, *, /): ");
+	}
+	public void printResult(List<Integer> resultArray) {
+		System.out.print("값: ");
+		for (int i = 0; i < resultArray.size(); i++) {
+			System.out.print(resultArray.get(i));
+			if (i != resultArray.size() - 1) {
+				System.out.print(", ");
+			}
+		}
+		System.out.println();
+	}
+	public void reStart() {
+		System.out.println("계속 하시겠습니까? (Y/N)");
 	}
 }
