@@ -1,4 +1,4 @@
-package assignment.kiosk.level2;
+package assignment.kiosk.level3;
 
 public class MenuItem {
 	private String name; // 햄버거 이름
