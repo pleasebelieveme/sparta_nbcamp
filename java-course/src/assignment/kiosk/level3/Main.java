@@ -1,8 +1,6 @@
-package assignment.kiosk.level2;
+package assignment.kiosk.level3;
 
 import java.util.ArrayList;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.List;
 import java.util.Scanner;
 
@@ -20,6 +18,15 @@ import java.util.Scanner;
  */
 public class Main {
 	public static void main(String[] args) {
+
+		Kiosk kiosk = new Kiosk();
+		kiosk.start();
+
+
+
+
+
+
 		// List 선언 및 초기화
 		List<MenuItem> itemList = new ArrayList<>();
 		// add 함수를 통해 new MenuItem(이름, 가격, 설명) itemList에 삽입
