@@ -13,14 +13,16 @@ public class Kiosk {
 
 	Kiosk() {
 		this.menuItems = new ArrayList<>();
-	}
 
-	// `main` 함수에서 관리하던 입력과 반복문 로직은 이제 `start` 함수를 만들어 관리합니다.
-	public void start() {
 		this.menuItems.add(new MenuItem("ShackBurger", 6.9, "토마토, 양상추, 쉑소스가 토핑된 치즈버거"));
 		this.menuItems.add(new MenuItem("SmokeBurger", 8.9, "베이컨, 체리 페어에 쉑소스가 토핑된 치즈버거"));
 		this.menuItems.add(new MenuItem("CheeseBurger", 6.9, "포테이토 번과 비프패티, 치즈가 토핑된 치즈버거"));
 		this.menuItems.add(new MenuItem("HamBurger", 5.4, "비프패티를 기반으로 야채가 들어간 치즈버거"));
+	}
+
+	// `main` 함수에서 관리하던 입력과 반복문 로직은 이제 `start` 함수를 만들어 관리합니다.
+	public void start() {
+
 
 		// Scanner 선언
 		Scanner sc = new Scanner(System.in);
@@ -50,18 +52,13 @@ public class Kiosk {
 				continue;
 			}
 
-
 			// 메뉴 선택 처리
+			// 스위치없이 출력을 한줄로
+			//  값이 추가되거나 삭제되었을때 방안 고민
 			switch (choice) {
 				case 1:
-					System.out.println("선택한 메뉴: " + menuItems.get(choice-1).getName() + ", 가격: " + menuItems.get(choice-1).getPrice() + ", 설명: " + menuItems.get(choice-1).getDetails()+ "\n");
-					break;
 				case 2:
-					System.out.println("선택한 메뉴: " + menuItems.get(choice-1).getName() + ", 가격: " + menuItems.get(choice-1).getPrice() + ", 설명: " + menuItems.get(choice-1).getDetails()+ "\n");
-					break;
 				case 3:
-					System.out.println("선택한 메뉴: " + menuItems.get(choice-1).getName() + ", 가격: " + menuItems.get(choice-1).getPrice() + ", 설명: " + menuItems.get(choice-1).getDetails()+ "\n");
-					break;
 				case 4:
 					System.out.println("선택한 메뉴: " + menuItems.get(choice-1).getName() + ", 가격: " + menuItems.get(choice-1).getPrice() + ", 설명: " + menuItems.get(choice-1).getDetails()+ "\n");
 					break;

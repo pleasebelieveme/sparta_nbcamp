@@ -1,15 +1,11 @@
 package assignment.kiosk.level4;
 
-/**
- * 세부 메뉴 속성(이름, 가격, 설명)을 가지는 클래스
- */
-
 public class MenuItem {
-	private String name; // 햄버거 이름
-	private double price; // 햄버거 가격
-	private String details; // 햄버거 세부사항
+	private String name; // 이름
+	private double price; // 가격
+	private String details; // 세부사항
 
-	MenuItem () {}
+	MenuItem() {}
 	public MenuItem(String name, double price, String details) {
 		this.name = name;
 		this.price = price;
