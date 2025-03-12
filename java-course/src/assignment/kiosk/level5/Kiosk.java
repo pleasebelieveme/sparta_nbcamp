@@ -77,10 +77,11 @@ public class Kiosk {
 
 				// 메뉴 선택 처리
 				// 가독성을 높이려고 하다가 더 직관적이지 않은 경우가 생길수 있다.
-				if (itemChoice >= 1 && itemChoice <= menus.get(categoryChoice-1).getMenuItems().size()) {
-					System.out.println("선택한 메뉴: " + menus.get(categoryChoice-1).getMenuItems().get(itemChoice-1).getName() +
-						", 가격: " + menus.get(categoryChoice-1).getMenuItems().get(itemChoice-1).getPrice() +
-						", 설명: " + menus.get(categoryChoice-1).getMenuItems().get(itemChoice-1).getDetails() + "\n");
+				List<MenuItem> menuItems = menus.get(categoryChoice-1).getMenuItems();
+				if (itemChoice >= 1 && itemChoice <= menuItems.size()) {
+					System.out.println("선택한 메뉴: " + menuItems.get(itemChoice-1).getName() +
+						", 가격: " + menuItems.get(itemChoice-1).getPrice() +
+						", 설명: " + menuItems.get(itemChoice-1).getDetails() + "\n");
 				} else if (itemChoice == 0) {
 					continue;
 				}
