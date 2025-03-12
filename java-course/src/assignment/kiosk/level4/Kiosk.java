@@ -4,37 +4,35 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+// 메서드 묶기 네이밍이 가장 중요!
+// 해당 메서드가 많아지면 클래스를 고려
+// 해당 메서드가
+
 public class Kiosk {
 
-
-	// 키오스크에 메뉴가 들어가도록
-	// MenuItem menuItem;
-	// `MenuItem`을 관리하는 리스트가 필드로 존재합니다.
-	private List<MenuItem> menuItems;
-
+	private List<Menu> menus;
 
 	Kiosk() {
-		this.menuItems = new ArrayList<>();
+		this.menus = new ArrayList<>();
+		menus.add(new Menu("burger"));
+		menus.add(new Menu("drink"));
+		menus.add(new Menu("dessert"));
 	}
 
 	// `main` 함수에서 관리하던 입력과 반복문 로직은 이제 `start` 함수를 만들어 관리합니다.
 	public void start() {
-		this.menuItems.add(new MenuItem("ShackBurger", 6.9, "토마토, 양상추, 쉑소스가 토핑된 치즈버거"));
-		this.menuItems.add(new MenuItem("SmokeBurger", 8.9, "베이컨, 체리 페어에 쉑소스가 토핑된 치즈버거"));
-		this.menuItems.add(new MenuItem("CheeseBurger", 6.9, "포테이토 번과 비프패티, 치즈가 토핑된 치즈버거"));
-		this.menuItems.add(new MenuItem("HamBurger", 5.4, "비프패티를 기반으로 야채가 들어간 치즈버거"));
-
 		// Scanner 선언
 		Scanner sc = new Scanner(System.in);
 		boolean flag = true;
 
+		// 메뉴 객체 생성
 		while (flag) {
 			System.out.println("\uD83E\uDD17 키오스크를 시작합니다. \uD83E\uDD17");
-			// 메뉴출력
-			int idx = 1;
-			for (MenuItem m : menuItems) {
-				System.out.println(idx++ + ". " + m.getName() + "   | W " + m.getPrice() + " | " + m.getDetails());
+			System.out.println("[ 메뉴 ]");
+			for (int i = 0; i < menus.size(); i++) {
+				System.out.println((i+1) + ". " + menus.get(i).getCategory());
 			}
+			System.out.println("0. 종료");
 
 			// 사용자 입력 숫자 검증
 			if (!sc.hasNextInt()) {
@@ -44,21 +42,49 @@ public class Kiosk {
 			}
 
 			// 사용자 입력 저장
-			int choice = sc.nextInt();
+			int categoryChoice = sc.nextInt();
 
-			// 메뉴 번호 범위 체크
-			if (choice < 0 || choice > menuItems.size()) {
+			// 카테고리 번호 범위 체크
+			if (categoryChoice < 0 || categoryChoice > menus.size()) {
 				System.out.println("메뉴에 나와있는 번호를 입력해주세요.\n");
 				continue;
 			}
 
+			// 카테고리 선택 처리
+			if (categoryChoice >= 1 && categoryChoice <= menus.size()) {
+				// 메뉴출력
+				int idx = 1;
+				for (MenuItem m : menus.get(categoryChoice-1).getMenuItems()) {
+					System.out.println(idx++ + ". " + m.getName() + "   | W " + m.getPrice() + " | " + m.getDetails());
+				}
+				System.out.println("0. 뒤로가기\n");
 
-			// 메뉴 선택 처리
-			if (choice >= 1 && choice <= menuItems.size()) {
-				System.out.println("선택한 메뉴: " + menuItems.get(choice-1).getName() +
-					", 가격: " + menuItems.get(choice-1).getPrice() +
-					", 설명: " + menuItems.get(choice-1).getDetails() + "\n");
-			} else if (choice == 0) {
+				// 사용자 입력 숫자 검증
+				if (!sc.hasNextInt()) {
+					System.out.println("잘못된 입력입니다. 숫자를 입력해주세요.\n");
+					sc.next();
+					continue;
+				}
+
+				// 사용자 입력 저장
+				int itemChoice = sc.nextInt();
+
+				// 메뉴 번호 범위 체크
+				if (itemChoice < 0 || itemChoice > menus.get(categoryChoice-1).getMenuItems().size()) {
+					System.out.println("메뉴에 나와있는 번호를 입력해주세요.\n");
+					continue;
+				}
+
+				// 메뉴 선택 처리
+				// 가독성을 높이려고 하다가 더 직관적이지 않은 경우가 생길수 있다.
+				if (itemChoice >= 1 && itemChoice <= menus.get(categoryChoice-1).getMenuItems().size()) {
+					System.out.println("선택한 메뉴: " + menus.get(categoryChoice-1).getMenuItems().get(itemChoice-1).getName() +
+						", 가격: " + menus.get(categoryChoice-1).getMenuItems().get(itemChoice-1).getPrice() +
+						", 설명: " + menus.get(categoryChoice-1).getMenuItems().get(itemChoice-1).getDetails() + "\n");
+				} else if (itemChoice == 0) {
+					continue;
+				}
+			} else if (categoryChoice == 0) {
 				flag = false;
 				System.out.println("프로그램을 종료합니다.");
 			}
