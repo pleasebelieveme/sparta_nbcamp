@@ -35,6 +35,7 @@ public class Kiosk {
 			for (MenuItem m : menuItems) {
 				System.out.println(idx++ + ". " + m.getName() + "   | W " + m.getPrice() + " | " + m.getDetails());
 			}
+			System.out.println("0. 종료");
 
 			// 사용자 입력 숫자 검증
 			if (!sc.hasNextInt()) {
@@ -56,16 +57,12 @@ public class Kiosk {
 			// 스위치없이 출력을 한줄로
 			//  값이 추가되거나 삭제되었을때 방안 고민
 			switch (choice) {
-				case 1:
-				case 2:
-				case 3:
-				case 4:
+				case 1, 2, 3, 4 ->
 					System.out.println("선택한 메뉴: " + menuItems.get(choice-1).getName() + ", 가격: " + menuItems.get(choice-1).getPrice() + ", 설명: " + menuItems.get(choice-1).getDetails()+ "\n");
-					break;
-				case 0:
+				case 0 -> {
 					flag = false;
 					System.out.println("프로그램을 종료합니다.");
-					break;
+				}
 			} // switch
 		} // while
 		sc.close();

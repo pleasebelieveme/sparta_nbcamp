@@ -16,6 +16,7 @@ public class MenuItem {
 		return name;
 	}
 
+	//밸리데이션(검증)을 추가하는게 캡슐화의 2단계
 	public void setName(String name) {
 		this.name = name;
 	}
