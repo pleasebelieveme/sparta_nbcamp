@@ -12,6 +12,7 @@ public class Cart {
 	// Integer 수량
 	private Map<MenuItem, Integer> cartList;
 
+	public Cart() {};
 	public Cart(Map<MenuItem, Integer> cartList) {
 		this.cartList = cartList;
 	}

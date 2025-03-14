@@ -1,7 +1,9 @@
 package assignment.kiosk.challenge1;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Scanner;
 
 // 메서드 묶기 네이밍이 가장 중요!
@@ -36,8 +38,24 @@ public class Kiosk {
 
 			if(!cart.isEmpty()) {
 				System.out.println("\n[ ORDER MENU ]");
-				// 🚫for문으로 출력
-				System.out.println("1. " + cart.get(0).getName());
+				for (int i = 0; i < cart.size(); i++) {
+					for (MenuItem menuItem : cart.get(i).getCartList().keySet()) {
+						System.out.println(i+menus.size()+1 + ". " + menuItem.getName() +" | W " + menuItem.getPrice() + " | "+ menuItem.getDetails());
+					}
+					// System.out.println(i+menus.size()+1 + ". " + cart.get(i).getCartList().get(menus.get(i).getMenuItems().get(i).getName()));
+				}
+				System.out.println("\n [ TOTAL ]");
+				double totalPrice = 0;
+				for (int i = 0; i < cart.size(); i++) {
+					for (MenuItem menuItem : cart.get(i).getCartList().keySet()) {
+						totalPrice += menuItem.getPrice();
+					}
+				}
+				System.out.println("W " + totalPrice);
+
+				// 🚫 기능구현 아직
+				System.out.println("\n1. 주문" +
+					"\n2. 메뉴판");
 			}
 			// ✅카테고리 선택
 			// 카테고리 사용자 입력 정수 검증
@@ -69,11 +87,15 @@ public class Kiosk {
 					continue;
 				}
 				// 메뉴 선택 처리
-				List<MenuItem> menuItems = menus.get(categoryChoice-1).getMenuItems();
-				if (itemChoice >= 1 && itemChoice <= menuItems.size()) {
-					System.out.println("\n선택한 메뉴: " + menuItems.get(itemChoice-1).getName() +
-						", 가격: " + menuItems.get(itemChoice-1).getPrice() +
-						", 설명: " + menuItems.get(itemChoice-1).getDetails());
+				// List<MenuItem> menuItems = menus.get(categoryChoice-1).getMenuItems();
+				// if (itemChoice >= 1 && itemChoice <= menuItems.size()) {
+				// 	System.out.println("\n선택한 메뉴: " + menuItems.get(itemChoice-1).getName() +
+				// 		", 가격: " + menuItems.get(itemChoice-1).getPrice() +
+				// 		", 설명: " + menuItems.get(itemChoice-1).getDetails());
+				if (itemChoice >= 1 && itemChoice <= menus.get(categoryChoice-1).getMenuItems().size()) {
+					System.out.println("선택한 메뉴: " + menus.get(categoryChoice-1).getMenuItems().get(itemChoice-1).getName() +
+						", 가격: " + menus.get(categoryChoice-1).getMenuItems().get(itemChoice-1).getPrice() +
+						", 설명: " + menus.get(categoryChoice-1).getMenuItems().get(itemChoice-1).getDetails() + "\n");
 					System.out.println("\uD83D\uDED2 위 메뉴를 장바구니에 추가하시겠습니까? \uD83D\uDED2 \n" +
 						"1. 추가\n" +
 						"2. 취소");
@@ -85,13 +107,16 @@ public class Kiosk {
 					int cartChoice = sc.nextInt();
 					// 장바구니 사용자 입력 번호 범위 체크
 					if(cartChoice < 1 || cartChoice > 2) {
-						System.out.println(menuItems.get(itemChoice-1).getName() + "메뉴에 나와있는 번호를 입력해주세요.\n");
+						System.out.println(menus.get(categoryChoice-1).getMenuItems().get(itemChoice-1).getName() + "메뉴에 나와있는 번호를 입력해주세요.\n");
 						continue; // 처음으로
 					}
 					if(cartChoice==1) {
 						System.out.println("이 장바구니에 추가되었습니다.\n");
 						// 🚫수량 1 하드코딩 수정필요
-						cart.add(new Cart(menuItems.get(itemChoice-1).getName(), 1, menuItems.get(itemChoice-1).getPrice()));
+						Map<MenuItem, Integer> tmpMap = new HashMap<>();
+						tmpMap.put(menus.get(categoryChoice-1).getMenuItems().get(itemChoice-1), tmpMap.getOrDefault(menus.get(categoryChoice-1).getMenuItems().get(itemChoice-1), 0) + 1);
+						cart.add(new Cart(tmpMap));
+						// cart.add(cart.get(cart.size()).getCartList())
 					} else {
 						continue;
 					}
