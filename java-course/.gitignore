@@ -11,6 +11,8 @@
 .idea/**/usage.statistics.xml
 .idea/**/dictionaries
 .idea/**/shelf
+# 인텔리J 테마 설정
+.idea/material_theme_project_new.xml
 
 # AWS User-specific
 .idea/**/aws.xml
