@@ -3,6 +3,9 @@ package assignment.pokemon;
 import java.util.ArrayList;
 import java.util.List;
 
+/*
+https://slowlove.notion.site/1b6dc9668e7780aa801af0e039a41a6c
+ */
 public class Main {
 	public static void main(String[] args) {
 
