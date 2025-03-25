@@ -2,14 +2,19 @@ package assignment.pokemon;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Queue;
+import java.util.Stack;
 
+/*
+https://slowlove.notion.site/1b6dc9668e7780aa801af0e039a41a6c
+ */
 public class Main {
 	public static void main(String[] args) {
 
 		Porketmon pica = new Porketmon("피카츄", "전기", 100, 20, 10);
 		Porketmon pairi = new Porketmon("파이리", "불꽃", 90, 25, 8);
 		Porketmon kkobugi = new Porketmon("꼬부기", "물", 110, 18, 12);
-
+		
 		/*
 		[출력 예시]
 		피카츄가 파이리를 공격합니다!
