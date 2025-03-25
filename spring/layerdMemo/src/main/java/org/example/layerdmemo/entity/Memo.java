@@ -19,6 +19,7 @@ public class Memo {
 		this.title = title;
 		this.contents = contents;
 	}
+
 	public void update(String title, String contents) {
 		this.title = title;
 		this.contents = contents;
