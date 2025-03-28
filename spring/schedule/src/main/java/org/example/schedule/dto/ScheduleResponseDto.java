@@ -18,15 +18,19 @@ public class ScheduleResponseDto {
 	private String scheduleContent;
 	private String writer;
 	private String schedulePwd;
-	// 날짜 포멧팅
-	// @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss", timezone = "Asia/Seoul")
-	private Timestamp updatedAt;
+
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss")
+	private LocalDateTime createdAt;
+
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss")
+	private LocalDateTime updatedAt;
 
 	public ScheduleResponseDto(Schedule schedule) {
 		this.scheduleId = schedule.getScheduleId();
 		this.scheduleContent = schedule.getScheduleContent();
 		this.writer = schedule.getWriter();
 		this.schedulePwd = schedule.getSchedulePwd();
+		this.createdAt = schedule.getCreatedAt();
 		this.updatedAt = schedule.getUpdatedAt();
 	}
 }

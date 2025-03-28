@@ -16,7 +16,8 @@ public class Schedule {
 	private String scheduleContent;
 	private String writer;
 	private String schedulePwd;
-	private Timestamp updatedAt;
+	private LocalDateTime createdAt;
+	private LocalDateTime updatedAt;
 
 	public Schedule(String scheduleContent, String writer, String schedulePwd) {
 		this.scheduleContent = scheduleContent;
