@@ -34,7 +34,9 @@ public class JdbcTemplateScheduleRepository implements ScheduleRepository{
 	public ScheduleResponseDto createSchedule(Schedule schedule) {
 		SimpleJdbcInsert jdbcInsert = new SimpleJdbcInsert(jdbcTemplate);
 		jdbcInsert.withTableName("schedule").usingGeneratedKeyColumns("schedule_id");
+
 		LocalDateTime now = LocalDateTime.now();
+
 		Map<String, Object> parameters = new HashMap<>();
 		parameters.put("schedule_content", schedule.getScheduleContent());
 		parameters.put("writer", schedule.getWriter());
