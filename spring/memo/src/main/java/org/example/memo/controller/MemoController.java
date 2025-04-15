@@ -5,7 +5,6 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 
 import org.example.memo.dto.MemoRequestDto;
 import org.example.memo.dto.MemoResponseDto;
@@ -118,5 +117,3 @@ public class MemoController {
 		return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 	}
 }
-
-Set
